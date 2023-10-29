@@ -55,6 +55,13 @@ Because of feature of DuckDB allowing you [to run SQL queries directly on Parque
 
 For example (somewhere in Metabase SQL Query editor):
 
+prql example
+```prql
+from test_recipes 
+filter (name ~= "mexican")
+sort {-minutes, -n_steps};
+```
+
 ```sql
 # DuckDB selected as source
 
