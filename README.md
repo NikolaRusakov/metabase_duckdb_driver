@@ -56,11 +56,36 @@ Because of feature of DuckDB allowing you [to run SQL queries directly on Parque
 For example (somewhere in Metabase SQL Query editor):
 
 prql example
+
+```
+duckdb -unsigned ./doto.duckdb
+SET custom_extension_repository='http://welsch.lu/duckdb/prql/latest';
+LOAD prql;
+miniserve -g -p 3003 ./
+CREATE TABLE test_recipes AS SELECT * FROM 'http://127.0.0.1:3003/recipes.parquet';
+
+```
+
+query
+
 ```prql
 from test_recipes 
 filter (name ~= "mexican")
 sort {-minutes, -n_steps};
 ```
+
+```sql
+SELECT
+  *
+FROM
+  test_recipes
+WHERE
+  'mexican' LIKE 'mexican%'
+ORDER BY
+  minutes DESC,
+  n_steps DESC
+```
+
 
 ```sql
 # DuckDB selected as source
