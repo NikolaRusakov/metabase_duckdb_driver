@@ -1,3 +1,6 @@
 [submodule "metabase"]
 	path = metabase
 	url = git@github.com:NikolaRusakov/metabase.git
+[submodule "ds"]
+	path = ds
+	url = git@github.com:doto-solutions/ds.git
